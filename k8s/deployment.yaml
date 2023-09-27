@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atanar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atanar
+  template:
+    metadata:
+      labels:
+        app: atanar
+    spec:
+      containers:
+      - image: okteto.dev/atanar:latest
+        name: atanar
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/LandingStartups-html.zip"
+        - name: Vless_UUID
+          value: "79c2b45f-c735-492d-8ffb-9a1ab254c16a"
+        - name: Vless_Path
+          value: "/79c2b45f-c735-492d-8ffb-9a1ab254c16a-vless"
+        - name: Vmess_UUID
+          value: "79c2b45f-c735-492d-8ffb-9a1ab254c16a"
+        - name: Vmess_Path
+          value: "/79c2b45f-c735-492d-8ffb-9a1ab254c16a-vmess"
+        - name: Share_Path
+          value: "/v545ernk"
